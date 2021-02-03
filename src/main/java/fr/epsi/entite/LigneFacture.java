@@ -3,18 +3,33 @@ package fr.epsi.entite;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 /**
  * ? Classe ligneFacture créée selon le diagramme du documment
  */
 
+@Entity
 public class LigneFacture {
+
+    @Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
     private int qte;
     private double prix;
 
-    private List<Article> articles;
+    @ManyToOne
+    private Facture facture;
+
+    @ManyToOne
+    private Article article;
     
     public LigneFacture(){
-        articles = new ArrayList<Article>();
     }
 
     public void setPrix(double prix) {
@@ -29,12 +44,12 @@ public class LigneFacture {
     public int getQte() {
         return qte;
     }
+    public void setArticle(Article article) {
+        this.article = article;
+    }
+    public Article getArticle() {
+        return article;
+    }
     
-    public List<Article> getArticles() {
-        return articles;
-    }
-    public void addArticle(Article article){
-        articles.add(article);
-    }
 
 }

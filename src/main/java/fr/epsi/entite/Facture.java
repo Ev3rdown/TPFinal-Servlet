@@ -4,16 +4,32 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 /**
  * ? Classe Facture créée selon le diagramme du documment
  */
 
+@Entity
 public class Facture {
+
+    @Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
     private String numero;
     private Double prix;
     private Date date;
 
+    @ManyToOne
     private Client client;
+    
+    @OneToMany(mappedBy = "facture")
     private List<LigneFacture> lignesFacture;
 
     public Facture(){
