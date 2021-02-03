@@ -15,7 +15,32 @@ public class ArticleServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 	        throws ServletException, IOException
 	    {
-		   this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ArticlePage.jsp").forward(req, resp);
-	    }
+			if(req.getParameter("action")==null){
+				this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ArticlePage.jsp").forward(req, resp);
+
+			}else if(req.getParameter("action").equals("create")) {
+				this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ArticleCreate.jsp").forward(req, resp);
+				
+			} else {
+				this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ArticlePage.jsp").forward(req, resp);
+			}
+		}
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException
+		{
+			if(req.getParameter("actionPost")==null){
+				this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ArticlePage.jsp").forward(req, resp);
+
+			}else if(req.getParameter("actionPost").equals("create")) {
+				String nomArticle = req.getParameter("nomArticle");
+				Double prix = Double.valueOf(req.getParameter("prixArticle"));
+				
+
+				this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ArticlePage.jsp").forward(req, resp);
+				
+			} else {
+				this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ArticlePage.jsp").forward(req, resp);
+			}
+		}
 
 }

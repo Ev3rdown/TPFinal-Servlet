@@ -19,6 +19,7 @@ pageEncoding="UTF-8"%>
             </tr>
             </c:forEach>
         </table>
+        <a href="article?action=create" class="waves-effect waves-light btn">button</a>
     </div>
 
     <%@include file="commons/footer.jsp" %>
