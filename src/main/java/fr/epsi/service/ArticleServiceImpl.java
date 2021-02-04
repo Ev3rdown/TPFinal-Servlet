@@ -25,14 +25,17 @@ public class ArticleServiceImpl implements ArticleService {
 	private UserTransaction utx;
 
 	public void createArticle(String nom,Double prix) {
+		//On créé un nouvel objet Article
 		Article article = new Article();
 		article.setNom(nom);
 		article.setPrix(prix);
 		ArticleDao dao = new ArticleDaoImpl(em, utx);
+		//Puis on l'enregistre directement avec un em.persist(article) dans le dao
 		dao.createArticle(article);
 	}
 	public List<Article> getArticles() {
 		ArticleDao dao = new ArticleDaoImpl(em, utx);
+		//on récupert tous les articles dans une liste
 		return dao.getArticles();
 	}
 

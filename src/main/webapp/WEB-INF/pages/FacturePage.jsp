@@ -21,7 +21,9 @@ pageEncoding="UTF-8"%>
           </thead>
           <tbody>
             <c:forEach var="f" items="${listFactures}">
-            <tr onclick="document.location.href='./facture?action=detail&numero=${f.numero}'">
+              <!-- le cursor permet de rendre évident le onclick -->
+              <!-- le onclick permet d'avoir un moyen propre de rediriger quelque soit l'endroit où on clique sur la row  -->
+            <tr style="cursor: pointer;" onclick="document.location.href='./facture?action=detail&numero=${f.numero}'">
                 <td><c:out value="${f.numero}"></c:out></td>
                 <td><c:out value="${f.date}"></c:out></td>
                 <td><c:out value="${f.client.nom}"></c:out></td>

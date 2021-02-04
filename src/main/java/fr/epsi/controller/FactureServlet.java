@@ -1,7 +1,6 @@
 package fr.epsi.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -23,19 +22,21 @@ public class FactureServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 	        throws ServletException, IOException
 	    {
+			//Si le ?action= n'est pas présent:
 			if(req.getParameter("action")==null){
 				
 				req.setAttribute("listFactures", factureService.getFactures());
 				this.getServletContext().getRequestDispatcher("/WEB-INF/pages/FacturePage.jsp").forward(req, resp);
-
+			//Si le ?action= vaut detail:
 			}else if(req.getParameter("action").equals("detail")) {
-				System.out.println("initial");
+				//on récupert la facture via son numéro:
 				Facture facture = factureService.getFactureByNumero(req.getParameter("numero"));
 				req.setAttribute("facture", facture);
-				
+				//et on affiche une page de détail
 				this.getServletContext().getRequestDispatcher("/WEB-INF/pages/FactureDetail.jsp").forward(req, resp);
 
 			} else {
+			//Si le ?action= n'est pas valide, on redirige:
 				resp.sendRedirect(req.getContextPath() + "/facture");
 			}
 	    }

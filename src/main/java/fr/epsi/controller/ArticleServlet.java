@@ -21,6 +21,7 @@ public class ArticleServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 	        throws ServletException, IOException
 	    {
+			//Même principe que pour client et facture
 			if(req.getParameter("action")==null){
 				req.setAttribute("listArticles", articleService.getArticles());
 				this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ArticlePage.jsp").forward(req, resp);

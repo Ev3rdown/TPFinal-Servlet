@@ -17,6 +17,7 @@ pageEncoding="UTF-8"%>
             <input type="text" name="nomArticle">
 
             <label for="prixArticle">Prix</label>
+            <!-- Step pour pouvoir avoir des nombres à virgule -->
             <input type="number" step=".01" name="prixArticle">
 
             <input type="hidden" value="create" name="actionPost"/>

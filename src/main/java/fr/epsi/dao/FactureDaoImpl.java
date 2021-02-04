@@ -21,6 +21,7 @@ public class FactureDaoImpl implements FactureDao {
     public Facture getFactureByNumero(String numero) {
         // Attention au JOIN FETCH qui permet d'éviter une erreur liée au lazy loading hibernate
         return em.createQuery("SELECT f FROM Facture f JOIN FETCH f.lignesFacture l WHERE f.numero=:numero ORDER BY f.date",Facture.class)
+                                                    /* |||||||||| */
             .setParameter("numero", numero)
             .getResultList().get(0);
     }
