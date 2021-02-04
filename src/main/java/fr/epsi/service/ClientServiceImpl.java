@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 
 import fr.epsi.dao.ClientDao;
-import fr.epsi.dao.ClientDaoIplm;
+import fr.epsi.dao.ClientDaoImpl;
 import fr.epsi.entite.Client;
 
 @Stateless
@@ -28,11 +28,11 @@ public class ClientServiceImpl implements ClientService {
 		Client client = new Client();
 		client.setNom(nom);
 		client.setAdresse(adresse);
-		ClientDao dao = new ClientDaoIplm(em, utx);
+		ClientDao dao = new ClientDaoImpl(em, utx);
 		dao.createClient(client);
 	}
 	public List<Client> getClients() {
-		ClientDao dao = new ClientDaoIplm(em, utx);
+		ClientDao dao = new ClientDaoImpl(em, utx);
 		return dao.getClients();
 	}
 

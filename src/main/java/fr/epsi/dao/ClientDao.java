@@ -6,7 +6,6 @@ import fr.epsi.entite.Client;
 
 public interface ClientDao {
     
-    
     List<Client> getClients();
     void createClient(Client c);
     

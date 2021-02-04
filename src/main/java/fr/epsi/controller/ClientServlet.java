@@ -30,8 +30,7 @@ public class ClientServlet extends HttpServlet{
 				System.out.println("client create");
 				this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ClientCreate.jsp").forward(req, resp);
 			} else {
-				req.setAttribute("listClients", clientService.getClients());
-				this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ClientPage.jsp").forward(req, resp);
+				resp.sendRedirect(req.getContextPath() + "/ListeClient");
 			}
 		}
 
@@ -43,9 +42,9 @@ public class ClientServlet extends HttpServlet{
 				String adresseClient = req.getParameter("adresseClient");
 				clientService.createClient(nomClient,adresseClient);
 				System.out.println("persisted");
-				//redirect
+				resp.sendRedirect(req.getContextPath() + "/ListeClient");
 			} else {
-				// redirect
+				resp.sendRedirect(req.getContextPath() + "/ListeClient");
 			}
 		}
 		

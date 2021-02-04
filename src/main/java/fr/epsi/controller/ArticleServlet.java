@@ -29,8 +29,7 @@ public class ArticleServlet extends HttpServlet{
 				this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ArticleCreate.jsp").forward(req, resp);
 				
 			} else {
-				req.setAttribute("listArticles", articleService.getArticles());
-				this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ArticlePage.jsp").forward(req, resp);
+				resp.sendRedirect(req.getContextPath() + "/article");
 			}
 		}
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -41,9 +40,9 @@ public class ArticleServlet extends HttpServlet{
 				Double prixArticle = Double.valueOf(req.getParameter("prixArticle"));
 				articleService.createArticle(nomArticle,prixArticle);
 				System.out.println("persisted");
-				//redirect
+				resp.sendRedirect(req.getContextPath() + "/article");
 			} else {
-				// redirect
+				resp.sendRedirect(req.getContextPath() + "/article");
 			}
 		}
 

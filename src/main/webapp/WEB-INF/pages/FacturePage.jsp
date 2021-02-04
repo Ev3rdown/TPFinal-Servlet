@@ -13,11 +13,22 @@ pageEncoding="UTF-8"%>
 
     <div class="container">
         <table>
+          <thead>
+            <th>Numero</th>
+            <th>Date</th>
+            <th>Client</th>
+            <th>Prix</th>
+          </thead>
+          <tbody>
             <c:forEach var="f" items="${listFactures}">
-            <tr>
-                <td><c:out value="${f}"></c:out></td>
+            <tr onclick="document.location.href='./facture?action=detail&numero=${f.numero}'">
+                <td><c:out value="${f.numero}"></c:out></td>
+                <td><c:out value="${f.date}"></c:out></td>
+                <td><c:out value="${f.client.nom}"></c:out></td>
+                <td><c:out value="${f.prix}"></c:out></td>
             </tr>
             </c:forEach>
+          </tbody>
         </table>
     </div>
 

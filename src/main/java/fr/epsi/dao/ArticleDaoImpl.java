@@ -10,23 +10,19 @@ import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
-import fr.epsi.entite.Client;
+import fr.epsi.entite.Article;
 
-public class ClientDaoIplm implements ClientDao {
+public class ArticleDaoImpl implements ArticleDao {
     EntityManager em;
     UserTransaction utx;
-    public ClientDaoIplm(EntityManager em,UserTransaction utx){
+    public ArticleDaoImpl(EntityManager em,UserTransaction utx){
         this.utx=utx;
         this.em=em;
     }
-    public List<Client> getClients(){
-        return em.createQuery("SELECT c FROM Client c ORDER BY c.nom",Client.class)
-            .getResultList();
-    }
-    public void createClient(Client c) {
+    public void createArticle(Article a) {
         try {
             utx.begin();
-            em.persist(c);
+            em.persist(a);
             utx.commit();    
             } catch (SecurityException e) {
                 e.printStackTrace();
@@ -43,5 +39,9 @@ public class ClientDaoIplm implements ClientDao {
         } catch (SystemException e){
 
         }
+    }
+    public List<Article> getArticles(){
+        return em.createQuery("SELECT a FROM Article a ORDER BY a.nom",Article.class)
+            .getResultList();
     }
 }

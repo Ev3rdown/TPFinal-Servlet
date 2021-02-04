@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 
 import fr.epsi.dao.ArticleDao;
-import fr.epsi.dao.ArticleDaoIplm;
+import fr.epsi.dao.ArticleDaoImpl;
 import fr.epsi.entite.Article;
 
 @Stateless
@@ -28,11 +28,11 @@ public class ArticleServiceImpl implements ArticleService {
 		Article article = new Article();
 		article.setNom(nom);
 		article.setPrix(prix);
-		ArticleDao dao = new ArticleDaoIplm(em, utx);
+		ArticleDao dao = new ArticleDaoImpl(em, utx);
 		dao.createArticle(article);
 	}
 	public List<Article> getArticles() {
-		ArticleDao dao = new ArticleDaoIplm(em, utx);
+		ArticleDao dao = new ArticleDaoImpl(em, utx);
 		return dao.getArticles();
 	}
 

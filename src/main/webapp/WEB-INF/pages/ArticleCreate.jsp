@@ -17,7 +17,7 @@ pageEncoding="UTF-8"%>
             <input type="text" name="nomArticle">
 
             <label for="prixArticle">Prix</label>
-            <input type="number" name="prixArticle">
+            <input type="number" step=".01" name="prixArticle">
 
             <input type="hidden" value="create" name="actionPost"/>
             <input type="submit" value="Valider"/>
