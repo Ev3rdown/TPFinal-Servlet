@@ -6,6 +6,6 @@ import fr.epsi.entite.Client;
 
 public interface ClientService {
 	
-	List<Client> getClients();
-    void createClient(String nom, String adresse);
+	public List<Client> getClients();
+    public void createClient(String nom, String adresse);
 }

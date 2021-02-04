@@ -11,20 +11,22 @@ pageEncoding="UTF-8"%>
   <body>
     <div class="container"><%@include file="commons/menu.jsp" %></div>
 
-    <div class="container">
+    <div class="container" style="display: flex;flex-direction: column;">
         <table>
-            <thead>
-              <th>Nom</th>
-              <th>Prix</th>
-            </thead>
+          <thead>
+            <th>Nom</th>
+            <th>Prix</th>
+          </thead>
+          <tbody>
             <c:forEach var="a" items="${listArticles}">
             <tr>
                 <td><c:out value="${a.nom}"></c:out></td>
                 <td><c:out value="${a.prix}"></c:out></td>
             </tr>
             </c:forEach>
+          </tbody>
         </table>
-        <a href="article?action=create" class="waves-effect waves-light btn">button</a>
+        <a style="width: 50%;margin: auto;" href="article?action=create" class="waves-effect waves-light btn">Create article</a>
     </div>
 
     <%@include file="commons/footer.jsp" %>

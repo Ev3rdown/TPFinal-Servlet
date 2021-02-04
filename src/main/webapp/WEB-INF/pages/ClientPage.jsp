@@ -11,14 +11,22 @@ pageEncoding="UTF-8"%>
   <body>
     <div class="container"><%@include file="commons/menu.jsp" %></div>
 
-    <div class="container">
+    <div class="container" style="display: flex;flex-direction: column;">
         <table>
-            <c:forEach var="c" items="${listClient}">
+          <thead>
+            <th>Nom</th>
+            <th>Adresse</th>
+          </thead>
+          <tbody>
+            <c:forEach var="c" items="${listClients}">
             <tr>
-                <td><c:out value="${c}"></c:out></td>
+              <td><c:out value="${c.nom}"></c:out></td>
+              <td><c:out value="${c.adresse}"></c:out></td>
             </tr>
             </c:forEach>
+          </tbody>
         </table>
+        <a style="width: 50%;margin: auto;" href="ListeClient?action=create" class="waves-effect waves-light btn">Create client</a>
     </div>
 
     <%@include file="commons/footer.jsp" %>
